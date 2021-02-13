@@ -4,9 +4,17 @@ import curses
 import curses.textpad
 import os
 
+class todoList:
+    def __init__(self, name):
+        self.name = name
+        if not os.path.isfile(name):
+            with open(f"lists/{date}.txt", 'w') as file:
+                pass
+    
+    def display(self, stdscr)
 def createList(date):
     if not os.path.isfile(date):
-        with open(f"lists/{date}.txt", 'w'):
+        with open(f"lists/{date}.txt", 'w') as file:
             pass
 
 
@@ -16,6 +24,12 @@ def main(args, date):
     
     if args.edit:
        curses.wrapper(display, date) 
+
+
+def savefile(textret, date):
+    with open(f"lists/{date}.txt", 'w') as file:
+        file.write(textret)
+
 
 
 def display(stdscr, date):
@@ -42,6 +56,7 @@ def display(stdscr, date):
     bottomwindow.addstr("\n")
     tb = curses.textpad.Textbox(bottomwindow)
     text = tb.edit()
+    savefile(text, date) 
     bottomwindow.refresh()
 
 
