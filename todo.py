@@ -8,9 +8,15 @@ import os
 class todoList:
     def __init__(self, name):
         self.name = name
+        self.text = None
 
     def runner(self):
         curses.wrapper(self.display)
+       
+    def _save(self):
+        with open(f"lists/{self.name}.pkl", 'wb') as output:
+
+            pickle.dump(self, output, pickle.HIGHEST_PROTOCOL)
     
     def display(self, stdscr):
         stdscr.clear()
@@ -32,11 +38,22 @@ class todoList:
         bottomBox.addstr("to-do list")
         bottomBox.refresh()
         bottomwindow = curses.newwin(6, maxx - 4, 2, 2)
-        bottomwindow.addstr(self.name)
-        bottomwindow.addstr("\n")
-        tb = curses.textpad.Textbox(bottomwindow)
-        text = tb.edit()
-        bottomwindow.refresh()
+        if self.text is None:
+            bottomwindow.addstr(self.name)
+            bottomwindow.addstr("\n")
+            tb = curses.textpad.Textbox(bottomwindow)
+            text = tb.edit()
+            self.text = text
+            self._save()
+            bottomwindow.refresh()
+        else:
+            bottomwindow.addstr(self.text)
+            tb = curses.textpad.Textbox(bottomwindow)
+            text = tb.edit()
+            self.text = text
+            self._save()
+            bottomwindow.refresh()
+
 
 
 
@@ -52,9 +69,14 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     if args.edit:
-        if not os.path.isfile(args.edit + '.pkl'):
+        path = os.path.join('lists/', args.edit + '.pkl')
+        if not os.path.isfile(path):
             newList = todoList(args.edit)
             newList.runner()
+        else:
+            with open(path, 'rb') as input:
+                oldList = pickle.load(input)
+                oldList.runner()
 
 
 
