@@ -32,12 +32,11 @@ class todoList:
             curses.use_default_colors()
             curses.init_pair(1, curses.COLOR_RED, -1)
         stdscr.refresh()
-
-        bottomBox = curses.newwin(8, maxx - 2, 1, 1)
+        bottomBox = curses.newwin(20, 30, 1, 1)
         bottomBox.box()
         bottomBox.addstr("to-do list")
         bottomBox.refresh()
-        bottomwindow = curses.newwin(6, maxx - 4, 2, 2)
+        bottomwindow = curses.newwin(18, 28 , 2, 2)
         if self.text is None:
             bottomwindow.addstr(self.name)
             bottomwindow.addstr("\n")
@@ -53,9 +52,6 @@ class todoList:
             self.text = text
             self._save()
             bottomwindow.refresh()
-
-
-
 
         while True:
             event = stdscr.getch()
