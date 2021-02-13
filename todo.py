@@ -1,6 +1,7 @@
 from datetime import date
 import argparse
 import curses
+import curses.textpad
 import os
 
 def createList(date):
@@ -20,6 +21,9 @@ def main(args, date):
 def display(stdscr, date):
     stdscr.clear()
     stdscr.timeout(500)
+    curses.noecho()
+    curses.cbreak()
+    stdscr.keypad(1)
     maxy, maxx = stdscr.getmaxyx()
     curses.newwin(2, maxx, 3, 1)
     curses.curs_set(0)
@@ -36,7 +40,10 @@ def display(stdscr, date):
     bottomwindow = curses.newwin(6, maxx - 4, 2, 2)
     bottomwindow.addstr(date)
     bottomwindow.addstr("\n")
+    tb = curses.textpad.Textbox(bottomwindow)
+    text = tb.edit()
     bottomwindow.refresh()
+
 
 
     while True:
