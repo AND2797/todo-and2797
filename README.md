@@ -23,28 +23,24 @@ with categories / labels etc. I needed a simple way (without much window switchi
 
 ## Installation
 
-### *nix
-
 Move the python file to /usr/bin
 ```
-sudo mv todo.py /usr/bin/todo.py
+sudo mv todo.py /usr/bin/todo
 ```
-
-### Windows
 
 ## Usage
 
 ### Create / Edit a new list:
 ```python
-python3 todo.py --edit <listname>
+todo --edit <listname>
 # creates a new to-do list with <listname> or opens an existing to-do list with <listname>
 ```
 
 ### Delete lists:
 ```python
-python3 todo.py --remove all
+todo --remove all
 # removes all to-do lists
 
-python3 todo.py --remove <listname>
+todo --remove <listname>
 # deletes a to-do list
 ```
