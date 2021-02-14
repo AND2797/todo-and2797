@@ -1,7 +1,11 @@
 # todo
-<p align = "center">
-    <img src = "https://i.imgur.com/pDyD99X.png">
-</p>
+
++-----------------+
+| > +--todo----+  |
+|   | 1.       |  |
+|   | 2.       |  |
+|   +----------+  |
++-----------------+
 
 Minimalist to-do list to incorporate in your terminal workflow. 
 
