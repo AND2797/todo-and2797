@@ -31,3 +31,12 @@ the day in regular view without having to switch screens often.
 python3 todo.py --edit <listname>
 # creates a new to-do list with <listname> or opens an existing to-do list with <listname>
 ```
+
+### Delete lists:
+```python
+python3 todo.py --remove all
+# removes all to-do lists
+
+python3 todo.py --remove <listname>
+# deletes a to-do list
+```
