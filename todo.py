@@ -20,25 +20,21 @@ class todoList:
     
     def display(self, stdscr):
         stdscr.clear()
-        stdscr.timeout(500)
         curses.noecho()
         curses.cbreak()
         stdscr.keypad(1)
         maxy, maxx = stdscr.getmaxyx()
         curses.newwin(2, maxx, 3, 1)
-        curses.curs_set(0)
-        if (curses.has_colors()):
-            curses.start_color()
-            curses.use_default_colors()
-            curses.init_pair(1, curses.COLOR_RED, -1)
+        curses.curs_set(1)
         stdscr.refresh()
         bottomBox = curses.newwin(20, 30, 1, 1)
         bottomBox.box()
-        bottomBox.addstr("to-do list")
+        bottomBox.addstr("todo")
         bottomBox.refresh()
         bottomwindow = curses.newwin(18, 28 , 2, 2)
         if self.text is None:
-            bottomwindow.addstr(self.name)
+            bottomwindow.addstr(self.name + ' ')
+            bottomwindow.addstr(date.today().strftime('%m-%d-%Y'))
             bottomwindow.addstr("\n")
             tb = curses.textpad.Textbox(bottomwindow)
             text = tb.edit()
@@ -62,6 +58,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--edit")
+    parser.add_argument("--remove")
     args = parser.parse_args()
 
     if args.edit:
@@ -73,6 +70,24 @@ if __name__ == '__main__':
             with open(path, 'rb') as input:
                 oldList = pickle.load(input)
                 oldList.runner()
+
+    elif args.remove:
+        if args.remove == 'all':
+            files = os.listdir('lists/')
+
+            for _ in files:
+                path = os.path.join('lists/',_)
+                os.remove(path)
+            print("Removed all lists.")
+        else:
+            path = os.path.join('lists/', args.remove + '.pkl')
+            if os.path.isfile(path):
+                os.remove(path)
+                print(f"Removed {args.remove}")
+            else:
+                print("File does not exist.")
+
+
 
 
 
