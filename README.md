@@ -14,15 +14,21 @@ Minimalist to-do list to incorporate in your terminal workflow.
 ## Why?
 
 GUI to-do lists are distracting, moreover often you might not have access to
-GUI interfaces and may want to keep track or make small notes in a CLI. 
+GUIs and may want to make small notes or keep track of tasks in a CLI.
 
 Modern to-do lists are highly sophisticated, and I often found myself over-organizing
-with categories / labels etc. I needed a simple and minimalist way to keep my goals of 
-the day in regular view without having to switch screens often.
+with categories / labels etc. I needed a simple way (without much window switching) way to keep track of my tasks.
+
+
 
 ## Installation
 
+### *nix
 
+Move the python file to /usr/bin
+```
+sudo mv todo.py /usr/bin/todo.py
+```
 
 ## Usage
 
