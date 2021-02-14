@@ -25,3 +25,9 @@ the day in regular view without having to switch screens often.
 
 
 ## Usage
+
+### Create / Edit a new list:
+```python
+python3 todo.py --edit <listname>
+# creates a new to-do list with <listname> or opens an existing to-do list with <listname>
+```
