@@ -22,8 +22,9 @@ with categories / labels etc. I needed a simple way (without much window switchi
 
 
 ## Installation
-
-Move the python file to /usr/bin
+1. Clone the repository
+git clone `https://github.com/AND2797/todo.git`
+2. Move the python file to /usr/bin
 ```
 sudo mv todo.py /usr/bin/todo
 ```
