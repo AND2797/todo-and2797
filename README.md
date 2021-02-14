@@ -30,6 +30,8 @@ Move the python file to /usr/bin
 sudo mv todo.py /usr/bin/todo.py
 ```
 
+### Windows
+
 ## Usage
 
 ### Create / Edit a new list:
