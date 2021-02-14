@@ -19,7 +19,9 @@ GUIs and may want to make small notes or keep track of tasks in a CLI.
 Modern to-do lists are highly sophisticated, and I often found myself over-organizing
 with categories / labels etc. I needed a simple way (without much window switching) way to keep track of my tasks.
 
-
+<p align = "center">
+    <img src = https://i.imgur.com/k4Os5yX.png>
+</p>
 
 ## Installation
 1. Clone the repository
