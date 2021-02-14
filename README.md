@@ -24,11 +24,11 @@ with categories / labels etc. I needed a simple way (without much window switchi
 </p>
 
 ## Installation
-1. Clone the repository
+Clone the repository
 
 `git clone https://github.com/AND2797/todo.git`
 
-2. Move the python file to /usr/bin
+Move the python file to /usr/bin
 ```
 sudo mv todo.py /usr/bin/todo
 ```
