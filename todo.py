@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+#!/usr/bin/env python
 from datetime import date
 import pickle
 import argparse
@@ -60,9 +62,11 @@ if __name__ == '__main__':
     parser.add_argument("--edit")
     parser.add_argument("--remove")
     args = parser.parse_args()
-
+    dirpath = os.path.join(os.getcwd(),'todo_lists')
+    if not os.path.isdir(dirpath):
+        os.mkdir(dirpath)
     if args.edit:
-        path = os.path.join('lists/', args.edit + '.pkl')
+        path = os.path.join(dirpath, args.edit + '.pkl')
         if not os.path.isfile(path):
             newList = todoList(args.edit)
             newList.runner()
@@ -73,14 +77,13 @@ if __name__ == '__main__':
 
     elif args.remove:
         if args.remove == 'all':
-            files = os.listdir('lists/')
-
+            files = os.listdir(dirpath)
             for _ in files:
-                path = os.path.join('lists/',_)
+                path = os.path.join(dirpath,_)
                 os.remove(path)
             print("Removed all lists.")
         else:
-            path = os.path.join('lists/', args.remove + '.pkl')
+            path = os.path.join(dirpath, args.remove + '.pkl')
             if os.path.isfile(path):
                 os.remove(path)
                 print(f"Removed {args.remove}")
