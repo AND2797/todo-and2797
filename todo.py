@@ -57,7 +57,6 @@ class todoList:
                 break
 
 if __name__ == '__main__':
-
     parser = argparse.ArgumentParser()
     parser.add_argument("--edit")
     parser.add_argument("--remove")
