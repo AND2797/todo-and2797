@@ -51,3 +51,9 @@ todo --remove all
 todo --remove <listname>
 # deletes a to-do list
 ```
+
+### Keybinds
+```
+^G - Exit editing mode.
+q  - Quit todo
+```
