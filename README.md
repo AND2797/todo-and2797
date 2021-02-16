@@ -29,6 +29,7 @@ Clone the repository
 `git clone https://github.com/AND2797/todo.git`
 
 `cd todo`
+`sudo chmod +x todo.py`
 
 Move the python file to /usr/bin
 ```
