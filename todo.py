@@ -11,13 +11,13 @@ class todoList:
     def __init__(self, name):
         self.name = name
         self.text = None
+        self.savepath = None
 
     def runner(self):
         curses.wrapper(self.display)
        
     def _save(self):
         with open(f"todo_lists/{self.name}.pkl", 'wb') as output:
-
             pickle.dump(self, output, pickle.HIGHEST_PROTOCOL)
     
     def display(self, stdscr):
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     parser.add_argument("--edit")
     parser.add_argument("--remove")
     args = parser.parse_args()
-    dirpath = os.path.join(os.getcwd(),'todo_lists')
+    dirpath = '/usr/bin/todo_lists'
     if not os.path.isdir(dirpath):
         os.mkdir(dirpath)
     if args.edit:
