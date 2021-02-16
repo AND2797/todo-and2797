@@ -16,7 +16,7 @@ class todoList:
         curses.wrapper(self.display)
        
     def _save(self):
-        with open(f"lists/{self.name}.pkl", 'wb') as output:
+        with open(f"todo_lists/{self.name}.pkl", 'wb') as output:
 
             pickle.dump(self, output, pickle.HIGHEST_PROTOCOL)
     
