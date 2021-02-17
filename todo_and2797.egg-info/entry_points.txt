@@ -1,3 +1,0 @@
-[console_scripts]
-todo = todo.__main__:main
-
