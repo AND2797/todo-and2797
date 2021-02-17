@@ -2,11 +2,11 @@ from setuptools import setup
 
 setup(
         name = 'todo-and2797',
-        version = '0.1.3',
-        packages = ['todo-list'],
+        version = '0.1.4',
+        packages = ['todo'],
         entry_points = {
             'console_scripts': [
-                'todo = todo-list.__main__:main'
+                'todo = todo.__main__:main'
                 ]
             }
         )

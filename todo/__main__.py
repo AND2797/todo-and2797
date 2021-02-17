@@ -3,7 +3,7 @@ import pickle
 import os
 import sys
 import json
-from .todo-list import todoList
+from .todo import todoList
 
 def main():
     parser = argparse.ArgumentParser()
