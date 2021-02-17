@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-#!/usr/bin/env python
 from datetime import date
 import pickle
 import argparse
@@ -7,17 +5,21 @@ import curses
 import curses.textpad
 import os
 
+
+def argparser(arguments):
+    pass
+
 class todoList:
-    def __init__(self, name):
+    def __init__(self, name, settings):
         self.name = name
         self.text = None
-        self.savepath = None
+        self.settings = settings 
 
     def runner(self):
         curses.wrapper(self.display)
        
     def _save(self):
-        with open(f"todo_lists/{self.name}.pkl", 'wb') as output:
+        with open(f"{self.settings['save_loc']}/{self.name}.pkl", 'wb') as output:
             pickle.dump(self, output, pickle.HIGHEST_PROTOCOL)
     
     def display(self, stdscr):
@@ -60,6 +62,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--edit")
     parser.add_argument("--remove")
+    parser.add_argument("--settings")
+
     args = parser.parse_args()
     dirpath = '/usr/bin/todo_lists'
     if not os.path.isdir(dirpath):
