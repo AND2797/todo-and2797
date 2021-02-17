@@ -1,4 +1,5 @@
 import argparse 
+import pickle
 import os
 import sys
 import json
@@ -33,7 +34,7 @@ def main():
     if args.edit:
         path = os.path.join(dirpath, args.edit + '.pkl')
         if not os.path.isfile(path):
-            newList = todoList(args.edit, dirpath)
+            newList = todoList(args.edit, settings)
             newList.runner()
         else:
             with open(path, 'rb') as inputList:
