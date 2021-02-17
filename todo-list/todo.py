@@ -6,8 +6,6 @@ import curses.textpad
 import os
 
 
-def argparser(arguments):
-    pass
 
 class todoList:
     def __init__(self, name, settings):
