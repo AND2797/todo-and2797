@@ -31,7 +31,7 @@ pip install todo-and2797
 ## Usage
 ### Create a settings file:
 When using for the first time a settings file needs to be initialized, which contains the path
-to the folder where you want your lists to be saved.
+to the folder where you want your lists to be saved. The `settings.json` 
 ```
 todo --settings 1
 ```
