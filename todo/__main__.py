@@ -7,14 +7,17 @@ from .todo import todoList
 
 def main():
     parser = argparse.ArgumentParser()
+    parse.add_arguments("--com")
     parser.add_argument("--edit")
     parser.add_argument("--remove")
     parser.add_argument("--settings")
+    parser.add_argument("--view")
     args = parser.parse_args()
-
 
     settingsPath = os.path.join(os.path.split(sys.executable)[0], 
                             'settings.json')
+    
+         
     if args.settings:
         settings = {}
         saveLoc = str(input("Save path for lists:"))
@@ -55,6 +58,12 @@ def main():
                 print(f"Removed {args.remove}")
             else:
                 print("File does not exist.")
+
+    elif args.view:
+        files = os.listdir(dirpath)
+        for _ in files:
+            print(_)
+
 
 
 

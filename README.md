@@ -24,32 +24,33 @@ with categories / labels etc. I needed a simple way (without much window switchi
 </p>
 
 ## Installation
-Clone the repository
-
 ```
-git clone https://github.com/AND2797/todo.git
-cd todo
-sudo chmod +x todo.py
-```
-
-Move the python file to /usr/bin
-```
-sudo mv todo.py /usr/bin/todo
+pip install todo-and2797
 ```
 
 ## Usage
+### Create a settings file:
+When using for the first time a settings file needs to be initialized, which contains the path
+to the folder where you want your saved lists to be saved.
+```
+todo --settings 1
+```
 
 ### Create / Edit a new list:
 ```python
 todo --edit <listname>
 # creates a new to-do list with <listname> or opens an existing to-do list with <listname>
 ```
-
+### View current lists:
+```python
+todo --view 1
+# prints all to-do lists.
+```
 ### Delete lists:
 ```python
 todo --remove all
 # removes all to-do lists
-
+```
 todo --remove <listname>
 # deletes a to-do list
 ```
