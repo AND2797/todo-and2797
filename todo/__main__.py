@@ -1,74 +1,51 @@
 import argparse 
 import pickle
 import os
+from os.path import expanduser
 import sys
 import json
-from .todo import todoList
+from .todo import write, view, check
+
 
 def main():
-    parser = argparse.ArgumentParser()
-    parse.add_arguments("--com")
-    parser.add_argument("--edit")
-    parser.add_argument("--remove")
-    parser.add_argument("--settings")
-    parser.add_argument("--view")
-    args = parser.parse_args()
+    homedir = expanduser("~")
+    initfile = os.path.join(homedir,".todo.json")
+    if not os.path.isfile(initfile) and sys.argv[1] != "init":
+        print("Use the --init file to init")
 
-    settingsPath = os.path.join(os.path.split(sys.executable)[0], 
-                            'settings.json')
-    
-         
-    if args.settings:
-        settings = {}
-        saveLoc = str(input("Save path for lists:"))
-        settings["save_loc"] = os.path.join(saveLoc,'saved_lists')
-        os.makedirs(settings["save_loc"], exist_ok = True)
-        with open(settingsPath, "w") as settingsFile:
-            json.dump(settings, settingsFile)
-    else:
-        if not os.path.isfile(settingsPath):
-            print("settings.json file not found. Please set it using --settings flag")
-            sys.exit()
-        else:
-            with open(settingsPath, 'r') as settingsFile:
-                settings = json.load(settingsFile)
+    if sys.argv[1] == "init":
+        todolist = {}
+        with open(initfile, "w") as initfile:
+            json.dump(todolist, initfile) 
 
-    dirpath = settings["save_loc"]
-    if args.edit:
-        path = os.path.join(dirpath, args.edit + '.pkl')
-        if not os.path.isfile(path):
-            newList = todoList(args.edit, settings)
-            newList.runner()
-        else:
-            with open(path, 'rb') as inputList:
-                oldList = pickle.load(inputList)
-                oldList.runner()
+    elif sys.argv[1] == "add" or sys.argv[1] == "a":
+        print(sys.argv[1], sys.argv[2])
+        write(sys.argv[2])
 
-    elif args.remove:
-        if args.remove == 'all':
-            files = os.listdir(dirpath)
-            for _ in files:
-                path = os.path.join(dirpath, _)
-                os.remove(path)
-            print("Removed all lists.")
-        else:
-            path = os.path.join(dirpath, args.remove + '.pkl')
-            if os.path.isfile(path):
-                os.remove(path)
-                print(f"Removed {args.remove}")
-            else:
-                print("File does not exist.")
+    elif sys.argv[1] == "list" or sys.argv[1] == "l":
+        with open(initfile) as listfile:
+            data = json.load(listfile)
+        view(data) 
 
-    elif args.view:
-        files = os.listdir(dirpath)
-        for _ in files:
-            print(_)
+    elif sys.argv[1] == "check" or sys.argv[1] == "c":
+        with open(initfile) as listfile:
+            data = json.load(listfile)
+        taskidx = sys.argv[2]
+        task = data[taskidx]
+        modifiedTask = check(task)
+        data[taskidx] = modifiedTask
+        with open(initfile, "w") as initfile:
+            json.dump(data, initfile)
 
+    elif sys.argv[1] == "delete" or sys.argv[1] == "d":
+        with open(initfile) as listfile:
+            data = json.load(listfile)
 
-
-
-
-
+        taskidx = sys.argv[2]
+        del data[taskidx]
+        with open(initfile, "w") as initfile:
+            json.dump(data, initfile)
+        
 if __name__ == '__main__':
     main()
 

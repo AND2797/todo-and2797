@@ -1,58 +1,52 @@
-from datetime import date
-import pickle
-import argparse
-import curses
-import curses.textpad
+import sys
+from os.path import expanduser
 import os
+import json
+
+homedir =  expanduser("~")
+initfile = os.path.join(homedir,".todo.json")
+
+def opentodo(filepath):
+    with open(filepath) as todolist:
+        data = json.load(todolist)
+    return data
+
+def writetodo(filepath, data):
+    with open(filepath, "w") as todolist:
+        json.dump(data, todolist)
+
+def write(txt):
+    data = opentodo(initfile)
+    newid = len(data) + 1
+    data[newid] = {}
+    data[newid]["txt"] = txt 
+    data[newid]["done"] = False
+    writetodo(initfile, data)
+
+def view(todolist):
+    for key, value in todolist.items():
+        render(key, value)
+
+def render(idx, item):
+    donebox = '[ ]' if item["done"] is False else '[x]'
+    print(f"{idx} {donebox} {item['txt']}")
+
+
+def check(taskdata):
+    taskdata["done"] = True
+    return taskdata
 
 
 
-class todoList:
-    def __init__(self, name, settings):
-        self.name = name
-        self.text = None
-        self.settings = settings 
-
-    def runner(self):
-        curses.wrapper(self.display)
-       
-    def _save(self):
-        with open(f"{self.settings['save_loc']}/{self.name}.pkl", 'wb') as output:
-            pickle.dump(self, output, pickle.HIGHEST_PROTOCOL)
     
-    def display(self, stdscr):
-        stdscr.clear()
-        curses.noecho()
-        curses.cbreak()
-        stdscr.keypad(1)
-        maxy, maxx = stdscr.getmaxyx()
-        curses.newwin(2, maxx, 3, 1)
-        curses.curs_set(1)
-        stdscr.refresh()
-        bottomBox = curses.newwin(20, 30, 1, 1)
-        bottomBox.box()
-        bottomBox.addstr("todo")
-        bottomBox.refresh()
-        bottomwindow = curses.newwin(18, 28 , 2, 2)
-        if self.text is None:
-            bottomwindow.addstr(self.name + ' ')
-            bottomwindow.addstr(date.today().strftime('%m-%d-%Y'))
-            bottomwindow.addstr("\n")
-            tb = curses.textpad.Textbox(bottomwindow)
-            text = tb.edit()
-            self.text = text
-            self._save()
-            bottomwindow.refresh()
-        else:
-            bottomwindow.addstr(self.text)
-            tb = curses.textpad.Textbox(bottomwindow)
-            text = tb.edit()
-            self.text = text
-            self._save()
-            bottomwindow.refresh()
 
-        while True:
-            event = stdscr.getch()
-            if event == ord("q"):
-                break
+
+
+
+
+    
+    
+
+
+
 
