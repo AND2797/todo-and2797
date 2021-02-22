@@ -15,12 +15,13 @@ def writetodo(filepath, data):
     with open(filepath, "w") as todolist:
         json.dump(data, todolist)
 
-def write(txt):
+def write(txt, project = None):
     data = opentodo(initfile)
     newid = len(data) + 1
     data[newid] = {}
     data[newid]["txt"] = txt 
     data[newid]["done"] = False
+    data[newid]["project"] = project
     writetodo(initfile, data)
 
 def view(todolist):
@@ -29,7 +30,7 @@ def view(todolist):
 
 def render(idx, item):
     donebox = '[ ]' if item["done"] is False else '[x]'
-    print(f"{idx} {donebox} {item['txt']}")
+    print(f"{idx} {donebox} {item['txt']} {item['project']}")
 
 
 def check(taskdata):

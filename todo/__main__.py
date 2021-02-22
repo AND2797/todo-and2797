@@ -19,8 +19,11 @@ def main():
             json.dump(todolist, initfile) 
 
     elif sys.argv[1] == "add" or sys.argv[1] == "a":
-        print(sys.argv[1], sys.argv[2])
-        write(sys.argv[2])
+        project = "" 
+        if len(sys.argv) > 3 and sys.argv[3] == 'p' and sys.argv[4]: 
+            project = sys.argv[4]
+
+        write(sys.argv[2], project)
 
     elif sys.argv[1] == "list" or sys.argv[1] == "l":
         with open(initfile) as listfile:
