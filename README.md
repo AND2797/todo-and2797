@@ -2,10 +2,11 @@
 
 ```
 +-----------------+ 
-| > +--todo----+  | 
-|   | 1.       |  | 
-|   | 2.       |  | 
-|   +----------+  | 
+| > 1. [ ] task1  |
+|   2. [x] task2  |
+|                 | 
+|                 | 
+|                 | 
 +-----------------+ 
 ```
 
@@ -18,6 +19,9 @@ GUIs and may want to make small notes or keep track of tasks in a CLI.
 
 Modern to-do lists are highly sophisticated, and I often found myself over-organizing
 with categories / labels etc. I needed a simple way (without much window switching) way to keep track of my tasks.
+
+Initially set out to create a TUI but since I've been inspired to create a simple version of ultralist (https://github.com/ultralist) 
+as it follows a very clean and easy to work with design. 
 
 <p align = "center">
     <img src = https://i.imgur.com/k4Os5yX.png>
