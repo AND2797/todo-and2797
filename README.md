@@ -29,35 +29,38 @@ pip install todo-and2797
 ```
 
 ## Usage
-### Create a settings file:
-When using for the first time a settings file needs to be initialized, which contains the path
-to the folder where you want your lists to be saved. The `settings.json` is always stored in the `bin` directory
-of your python interpreter. 
+### todo init:
+todo uses a `.todo.json` file as persistant storage for lists in `json` format. At the moment the file is created in the home directory of the user.
+
 ```
-todo --settings 1
+todo init
 ```
 
-### Create / Edit a new list:
+### Add a new task:
 ```python
-todo --edit <listname>
-# creates a new to-do list with <listname> or opens an existing to-do list with <listname>
+todo a <task> 
+# adds a new task to the list
+
+todo a <task> p <project>
+# adds a new task under a specific project
 ```
-### View current lists:
+### Complete a task:
 ```python
-todo --view 1
+todo c <task number>
+# marks the task as done with a [x]
+```
+
+### View current list:
+```python
+todo l
 # prints all to-do lists.
 ```
-### Delete lists:
+### Delete task:
 ```python
-todo --remove all
-# removes all to-do lists
+todo d "all" 
+# removes all tasks from the list 
 
-todo --remove <listname>
-# deletes a to-do list
+todo d <task number> 
+# deletes a specific task 
 ```
 
-### Keybinds
-```
-^G - Exit editing mode.
-q  - Quit todo
-```
