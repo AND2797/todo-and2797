@@ -34,7 +34,7 @@ pip install todo-and2797
 ```
 
 ## Usage
-### todo init:
+### Initialize 
 todo uses a `.todo.json` file as persistant storage for lists in `json` format. At the moment the file is created in the home directory of the user.
 
 ```
