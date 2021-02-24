@@ -24,7 +24,7 @@ Initially set out to create a TUI but since I've been inspired to create a simpl
 as it follows a very clean and easy to work with design. 
 
 <p align = "center">
-    <img src = https://i.imgur.com/k4Os5yX.png>
+    <img src = https://i.imgur.com/I9rfCur.png>
 </p>
 
 ## Installation
@@ -42,10 +42,10 @@ todo init
 
 ### Add a new task:
 ```python
-todo a <task> 
+todo a "<task>" 
 # adds a new task to the list
 
-todo a <task> p <project>
+todo a "<task>" p "<project>"
 # adds a new task under a specific project
 ```
 ### Complete a task:
@@ -61,10 +61,9 @@ todo l
 ```
 ### Delete task:
 ```python
-todo d "all" 
-# removes all tasks from the list 
 
 todo d <task number> 
 # deletes a specific task 
+# to delete all tasks, you could simply `todo init` to refresh the list state.
 ```
 

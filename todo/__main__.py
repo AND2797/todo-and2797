@@ -43,9 +43,10 @@ def main():
     elif sys.argv[1] == "delete" or sys.argv[1] == "d":
         with open(initfile) as listfile:
             data = json.load(listfile)
-
+        
         taskidx = sys.argv[2]
         del data[taskidx]
+
         with open(initfile, "w") as initfile:
             json.dump(data, initfile)
         
