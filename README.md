@@ -30,6 +30,7 @@ as it follows a very clean and easy to work with design.
 ## Installation
 ```
 pip install todo-and2797
+# This requires that you have python installed and added to your $PATH
 ```
 
 ## Usage
