@@ -11,6 +11,8 @@
 ```
 
 Minimalist to-do list to incorporate in your terminal workflow. 
+## Archived
+This project is archived as of 3.18.2021. I am porting this to Go. 
 
 ## Why?
 
